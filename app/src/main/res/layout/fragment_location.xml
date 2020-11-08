@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/city3"
+    android:backgroundTint="@color/background"
+    android:backgroundTintMode="src_over"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/location_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location_et"
+            android:textColor="@color/textcolor"
+            android:textColorHighlight="@android:color/holo_blue_dark"
+            android:textColorHint="@android:color/holo_blue_dark"
+            android:textColorLink="@android:color/holo_blue_dark" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/oklocationbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:background="@color/colorPrimary"
+        app:cornerRadius="20dp"
+        android:text="@string/ok_btn"
+        android:textColor="@color/textcolor"/>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="@string/favourites"
+        android:textAlignment="center"
+        android:textColor="@color/textcolor"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/linlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+</LinearLayout>
