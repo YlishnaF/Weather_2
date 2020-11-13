@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PointView">
+        <attr name="point_color" format="color"/>
+        <attr name="point_pressed_color" format="color" />
+
+
+    </declare-styleable>
+</resources>

@@ -1,13 +1,18 @@
 package com.example.weather;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -23,12 +28,14 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    EditText location;
+    TextView showLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+// боковое меню
         drawerLayout= findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -39,7 +46,19 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-    }
+
+//BottomDialogFragment
+        showLocation = findViewById(R.id.locationshowtv);
+        location = findViewById(R.id.find_location_tv);
+        findViewById(R.id.point_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyBottomSheet dialogFragment = MyBottomSheet.newInstance();
+                dialogFragment.setDialogListener(dialogListener);
+                dialogFragment.show(getSupportFragmentManager(), "dialog_fragment");
+            }
+        });
+   }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -77,4 +96,11 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         }
     }
 
+    private OnDialogListener dialogListener = new OnDialogListener() {
+
+        @Override
+        public void onDialogOk(String data) {
+                showLocation.setText(data);
+        }
+    };
 }

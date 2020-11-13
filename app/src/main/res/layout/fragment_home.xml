@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="top|left"
-    android:background="@drawable/nature"
-    android:backgroundTint="@color/background"
+    android:background="@drawable/blue"
+
+    android:backgroundTint="#77A9C8ED"
     android:backgroundTintMode="src_over"
     tools:context=".MainActivity">
 
@@ -14,29 +15,38 @@
         android:id="@+id/locationshowtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:fontFamily="casual"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/catamaran"
         android:hint="@string/perm"
         android:includeFontPadding="false"
         android:text="Moscow"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.example.weather.PointView
+        android:id="@+id/point_view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="50dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="casual"
+        android:fontFamily="sans-serif"
         android:text="@string/temer_main"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -45,26 +55,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="54dp"
-        android:layout_height="46dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/locationshowtv"
         app:srcCompat="@drawable/cloudy" />
-
-    <ImageView
-        android:id="@+id/searchiv"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:foregroundGravity="top|right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerv_whetaher_day"
@@ -90,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerv_whetaher_day"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -151,15 +149,5 @@
         android:textColor="@color/textcolor"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/pressuretv" />
-
-    <ImageView
-        android:id="@+id/refresh"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchiv"
-        app:srcCompat="@drawable/refresh" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
