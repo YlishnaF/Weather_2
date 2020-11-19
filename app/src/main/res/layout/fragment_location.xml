@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/city3"
-    android:backgroundTint="@color/background"
-    android:backgroundTintMode="src_over"
+    android:background="@drawable/blue"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -19,6 +17,7 @@
             android:id="@+id/location_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran"
             android:hint="@string/location_et"
             android:textColor="@color/textcolor"
             android:textColorHighlight="@android:color/holo_blue_dark"
@@ -31,15 +30,15 @@
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:background="@color/colorPrimary"
-        app:cornerRadius="20dp"
         android:text="@string/ok_btn"
-        android:textColor="@color/textcolor"/>
+        android:textColor="@color/textcolor"
+        app:cornerRadius="20dp" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="casual"
+        android:fontFamily="@font/catamaran"
         android:text="@string/favourites"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
@@ -49,6 +48,6 @@
         android:id="@+id/linlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical" />
 
 </LinearLayout>
