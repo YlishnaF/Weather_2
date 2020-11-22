@@ -1,6 +1,7 @@
 package com.example.weather;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,12 +32,10 @@ public class HomeFragment extends Fragment {
     TextView humidity;
     TextView wind;
     ImageView iv;
-
-
     private TextView temperature;
     private static final float AbsoluteZero = -273.15f;
-
-
+    private SharedPreferences sharedPreferences;
+    private static final String myPref = "myPref";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,9 +86,21 @@ public class HomeFragment extends Fragment {
                         .into(background);
             }
         }
+        sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(myPref, Context.MODE_PRIVATE);
 
-        return v;
+        if(sharedPreferences.contains("city") && bundle == null){
+            location_tv.setText(sharedPreferences.getString("city", ""));
+        }
+       return v;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        String textValue = location_tv.getText().toString();
+        SharedPreferences.Editor editor =sharedPreferences.edit();
+        editor.putString("city", textValue);
+        editor.apply();
+    }
 
 }

@@ -1,7 +1,9 @@
 package com.example.weather;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -51,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     Toolbar toolbar;
     EditText location;
     TextView showLocation;
+//    private SharedPreferences sharedPreferences;
+//    private static final String myPref = "myPref";
+//    private static final String nameKey = "nameKey";
+
 
 
     @Override
@@ -65,15 +71,30 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+//        sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
+//
+//        if(sharedPreferences.contains(nameKey)){
+//            showLocation.setText(sharedPreferences.getString(nameKey, ""));
+//        }
 
    }
 
-   private void initView(){
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        String textValue =showLocation.getText().toString();
+//        SharedPreferences.Editor editor= sharedPreferences.edit();
+//        editor.putString(nameKey, textValue);
+//        editor.apply();
+//    }
+
+
+    private void initView(){
        drawerLayout= findViewById(R.id.drawer_layout);
        navigationView = findViewById(R.id.nav_view);
        toolbar = findViewById(R.id.toolbar);
        showLocation = findViewById(R.id.locationshowtv);
-  //     location = findViewById(R.id.find_location_tv);
+
    }
 
 

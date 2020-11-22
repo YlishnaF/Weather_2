@@ -39,15 +39,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/catamaran"
-        android:text="@string/favourites"
+        android:text="@string/history"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
         android:textSize="18sp" />
 
-    <LinearLayout
-        android:id="@+id/linlay"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" />
+        android:layout_height="450dp" />
 
 </LinearLayout>

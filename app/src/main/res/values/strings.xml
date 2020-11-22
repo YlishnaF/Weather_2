@@ -33,4 +33,8 @@
     <string name="ok_btn">Ok</string>
     <string name="warning_msg">Warning!</string>
     <string name="warning_txt">Please, enter location!</string>
+    <string name="add">add</string>
+    <string name="update">update</string>
+    <string name="remove">remove</string>
+    <string name="history">History</string>
 </resources>

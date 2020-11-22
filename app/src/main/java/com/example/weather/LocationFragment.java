@@ -1,14 +1,27 @@
 package com.example.weather;
 
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,21 +36,56 @@ public class LocationFragment extends Fragment{
     private TextInputEditText location_et;
     private Button button_ok;
     private static final float AbsoluteZero = 273.15f;
+    private RecyclerView recyclerView;
+    private CityHistoryAdapter adapter;
+    private HistorySource historySource;
 
-      @Override
+        @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
           View v = inflater.inflate(R.layout.fragment_location, container, false);
+          recyclerView = v.findViewById(R.id.history_recyclerView);
+          recyclerView.setHasFixedSize(true);
+          recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+          HistoryDao historyDao = App.getInstance()
+                  .getHistoryDao();
+          historySource = new HistorySource(historyDao);
+          adapter = new CityHistoryAdapter(getContext(), historySource);
+          recyclerView.setAdapter(adapter);
           location_et =v.findViewById(R.id.location_et);
           button_ok = v.findViewById(R.id.oklocationbtn);
           initRetorfit();
           button_ok.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
+                  HistoryWeather hw = new HistoryWeather();
+                  historySource.addHistory(getName(hw));
                   requestRetrifit(location_et.getText().toString(), Key.WEATHER_API_KEY);
               }
           });
+
           return v;
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case 1:
+                HistoryWeather historyWeather = historySource
+                        .getCities()
+                        .get((int)adapter.getMenuPosition());
+                historySource.removeHistory(historyWeather.id);
+                adapter.notifyItemRemoved(item.getGroupId());
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    public HistoryWeather getName(HistoryWeather historyWeather){
+          historyWeather.cityName = location_et.getText().toString();
+          return  historyWeather;
     }
 
     private void initRetorfit(){

@@ -20,7 +20,6 @@
         android:fontFamily="@font/catamaran"
         android:hint="@string/perm"
         android:includeFontPadding="false"
-        android:text="Moscow"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
         android:textSize="24sp"
