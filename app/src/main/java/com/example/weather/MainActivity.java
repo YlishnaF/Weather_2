@@ -1,9 +1,15 @@
 package com.example.weather;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -19,32 +25,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.stream.Collectors;
-
-import javax.net.ssl.HttpsURLConnection;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener{
 
@@ -53,11 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     Toolbar toolbar;
     EditText location;
     TextView showLocation;
-//    private SharedPreferences sharedPreferences;
-//    private static final String myPref = "myPref";
-//    private static final String nameKey = "nameKey";
-
-
+    private BroadcastReceiver receiver = new ConnectReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,28 +48,18 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         setContentView(R.layout.activity_main);
         initView();
 
+//        registerReceiver(receiver, new IntentFilter());
+        this.registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        initNotificationChannel();
+
 // боковое меню
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.nav_open,R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-//        sharedPreferences = getSharedPreferences(myPref, Context.MODE_PRIVATE);
-//
-//        if(sharedPreferences.contains(nameKey)){
-//            showLocation.setText(sharedPreferences.getString(nameKey, ""));
-//        }
-
    }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        String textValue =showLocation.getText().toString();
-//        SharedPreferences.Editor editor= sharedPreferences.edit();
-//        editor.putString(nameKey, textValue);
-//        editor.apply();
-//    }
 
 
     private void initView(){
@@ -134,4 +107,17 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
+    }
+    private void initNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            NotificationChannel channel = new NotificationChannel("2", "name", importance);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 }
