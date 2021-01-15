@@ -37,4 +37,6 @@
     <string name="update">update</string>
     <string name="remove">remove</string>
     <string name="history">History</string>
+    <string name="show_the_weather">Show the weather</string>
+    <string name="map">Map</string>
 </resources>

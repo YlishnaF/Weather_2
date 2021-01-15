@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        if(savedInstanceState == null){
+            getSupportFragmentManager().
+                    beginTransaction().
+                    replace(R.id.fragment_container, new HomeFragment()).
+                    commit();
+        }
 
 //        registerReceiver(receiver, new IntentFilter());
         this.registerReceiver(receiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -77,19 +83,19 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
             case R.id.nav_home:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.nav_host_fragment, new HomeFragment())
+                        .replace(R.id.fragment_container, new HomeFragment())
                         .commit();
                 break;
             case R.id.nav_location:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.nav_host_fragment, new LocationFragment())
+                        .replace(R.id.fragment_container, new LocationFragment())
                         .commit();
                 break;
             case R.id.nav_email:
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.nav_host_fragment, new SendFragment())
+                        .replace(R.id.fragment_container, new MapsFragment())
                         .commit();
         }
 

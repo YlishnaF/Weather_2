@@ -16,15 +16,15 @@
         android:id="@+id/locationshowtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="116dp"
         android:fontFamily="@font/catamaran"
         android:hint="@string/perm"
         android:includeFontPadding="false"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,14 +39,14 @@
 
     <TextView
         android:id="@+id/temperature_tv"
-        android:layout_width="53dp"
-        android:layout_height="23dp"
+        android:layout_width="81dp"
+        android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="@string/temer_main"
         android:textAlignment="center"
         android:textColor="@color/textcolor"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -57,45 +57,19 @@
         android:id="@+id/imageView"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/temperature_tv"
         app:layout_constraintTop_toBottomOf="@+id/locationshowtv"
         app:srcCompat="@drawable/cloudy" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerv_whetaher_day"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pressuretv"
-        app:layout_constraintTop_toBottomOf="@+id/temperature_tv" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/week"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="24dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerv_whetaher_day"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/temperature_tv"
         app:srcCompat="@drawable/wind" />
@@ -104,8 +78,8 @@
         android:id="@+id/imageView4"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/pressure" />
@@ -114,8 +88,8 @@
         android:id="@+id/imageView5"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/drop" />
@@ -123,41 +97,35 @@
     <TextView
         android:id="@+id/windtv"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/textcolor"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/temperature_tv" />
 
     <TextView
         android:id="@+id/pressuretv"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/textcolor"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/windtv" />
 
     <TextView
         android:id="@+id/humiditytv"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/textcolor"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/pressuretv" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@android:drawable/picture_frame" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

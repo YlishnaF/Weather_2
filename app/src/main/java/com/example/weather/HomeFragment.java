@@ -48,13 +48,12 @@ public class HomeFragment extends Fragment {
         humidity = v.findViewById(R.id.humiditytv);
         wind = v.findViewById(R.id.windtv);
         iv = v.findViewById(R.id.imageView);
-        ImageView background = v.findViewById(R.id.imageView6);
         PointView poiintView = v.findViewById(R.id.point_view);
 
         poiintView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new LocationFragment()).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new LocationFragment()).commit();
             }
         });
 
@@ -70,21 +69,6 @@ public class HomeFragment extends Fragment {
             pres.setText(pressure);
             humidity.setText(hum);
             wind.setText(windSpeed);
-            if (Float.parseFloat(temper) < 0 ){
-                Picasso.get()
-                        .load("https://cdn.icon-icons.com/icons2/345/PNG/128/15_35877.png")
-
-                        .into(background);
-            } else if(Float.parseFloat(temper) >= 0 && Float.parseFloat(temper) < 10){
-                Picasso.get()
-                        .load("https://cdn.icon-icons.com/icons2/347/PNG/128/128_(36)_35927.png")
-                        .fit()
-                        .into(background);
-            } else if(Float.parseFloat(temper) >10){
-                Picasso.get()
-                        .load("https://cdn.icon-icons.com/icons2/347/PNG/128/128_(1)_35963.png")
-                        .into(background);
-            }
         }
         sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(myPref, Context.MODE_PRIVATE);
 

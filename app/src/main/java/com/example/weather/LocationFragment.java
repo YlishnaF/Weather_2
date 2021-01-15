@@ -31,7 +31,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LocationFragment extends Fragment{
 
-    //private OnFragmetLocationListener listener;
     private OpenWeather openWeather;
     private TextInputEditText location_et;
     private Button button_ok;
@@ -96,7 +95,6 @@ public class LocationFragment extends Fragment{
                 .build();
 
         openWeather = retrofit.create(OpenWeather.class);
-
     }
 
     private void requestRetrifit(String city, String apiKey){
@@ -121,7 +119,7 @@ public class LocationFragment extends Fragment{
                               homeFragment.setArguments(bundle);
                                getActivity().getSupportFragmentManager()
                                        .beginTransaction()
-                                       .replace(R.id.nav_host_fragment, homeFragment).commit();
+                                       .replace(R.id.fragment_container, homeFragment).commit();
                               Toast.makeText(getContext(),Float.toString(result), Toast.LENGTH_SHORT).show();
                           }
                       }
